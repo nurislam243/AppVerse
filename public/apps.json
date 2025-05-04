@@ -1,0 +1,123 @@
+[
+    {
+      "id": "app001",
+      "name": "Programming Hero",
+      "developer": "Programming Hero Ltd.",
+      "thumbnail": "https://i.ibb.co/sWbb4Z5/programming-hero-thumb.jpg",
+      "banner": "https://i.ibb.co/vj5rT68/programming-hero-banner.jpg",
+      "downloads": 3500000,
+      "category": "Education",
+      "rating": 4.8,
+      "description": "Learn programming in an interactive and fun way with Programming Hero.",
+      "features": ["Interactive coding lessons", "Real-world projects", "Gamified learning experience"],
+      "reviews": [
+        { "user": "coder_nadia", "rating": 5, "comment": "Best app for beginners!" }
+      ]
+    },
+    {
+      "id": "app002",
+      "name": "FocusTask",
+      "developer": "Productive Labs",
+      "thumbnail": "https://i.ibb.co/ZYW3VTp/focus-task-thumb.jpg",
+      "banner": "https://i.ibb.co/7CQVJNm/focus-task-banner.jpg",
+      "downloads": 1200000,
+      "category": "Productivity",
+      "rating": 4.6,
+      "description": "Boost your productivity with task management and focus tools.",
+      "features": ["Task scheduling", "Focus timer", "Progress tracking"],
+      "reviews": [
+        { "user": "productive_sam", "rating": 5, "comment": "Helped me stay on track!" }
+      ]
+    },
+    {
+      "id": "app003",
+      "name": "GameZone",
+      "developer": "Gamer World",
+      "thumbnail": "https://i.ibb.co/NtZt2Zv/gamezone-thumb.jpg",
+      "banner": "https://i.ibb.co/M5hW1Hg/gamezone-banner.jpg",
+      "downloads": 5000000,
+      "category": "Gaming",
+      "rating": 4.9,
+      "description": "Explore and play the best mobile games in one app!",
+      "features": ["New game releases", "Multiplayer tournaments", "Daily rewards"],
+      "reviews": [
+        { "user": "gamer_king", "rating": 5, "comment": "Awesome collection of games!" }
+      ]
+    },
+    {
+      "id": "app004",
+      "name": "Learnify",
+      "developer": "EduTech Co.",
+      "thumbnail": "https://i.ibb.co/2qF4qYX/learnify-thumb.jpg",
+      "banner": "https://i.ibb.co/4pDNDk1/learnify-banner.jpg",
+      "downloads": 2400000,
+      "category": "Education",
+      "rating": 4.7,
+      "description": "Online courses and tutorials on various topics made simple.",
+      "features": ["Video lectures", "Certificates", "Expert instructors"],
+      "reviews": [
+        { "user": "student_jane", "rating": 4, "comment": "Great app for learning new skills." }
+      ]
+    },
+    {
+      "id": "app005",
+      "name": "TimeManager",
+      "developer": "Efficient Soft",
+      "thumbnail": "https://i.ibb.co/jLhk0k6/time-manager-thumb.jpg",
+      "banner": "https://i.ibb.co/FhSdp1b/time-manager-banner.jpg",
+      "downloads": 900000,
+      "category": "Productivity",
+      "rating": 4.5,
+      "description": "Manage your time efficiently with scheduling and analytics.",
+      "features": ["Daily planner", "Time analytics", "Custom reminders"],
+      "reviews": [
+        { "user": "time_saver", "rating": 5, "comment": "My productivity improved a lot!" }
+      ]
+    },
+    {
+      "id": "app006",
+      "name": "BattleArena",
+      "developer": "Arena Games",
+      "thumbnail": "https://i.ibb.co/9h9Zy5k/battlearena-thumb.jpg",
+      "banner": "https://i.ibb.co/Vv1mq9T/battlearena-banner.jpg",
+      "downloads": 6700000,
+      "category": "Gaming",
+      "rating": 4.9,
+      "description": "Join epic battles in this multiplayer online arena game.",
+      "features": ["Real-time battles", "Global leaderboard", "Unique heroes"],
+      "reviews": [
+        { "user": "fighter_max", "rating": 5, "comment": "Best MOBA game on mobile!" }
+      ]
+    },
+    {
+      "id": "app007",
+      "name": "NotePro",
+      "developer": "NoteMakers Inc.",
+      "thumbnail": "https://i.ibb.co/yqQrxKq/notepro-thumb.jpg",
+      "banner": "https://i.ibb.co/fNTb5rK/notepro-banner.jpg",
+      "downloads": 1800000,
+      "category": "Productivity",
+      "rating": 4.4,
+      "description": "Take notes, organize your thoughts, and sync across devices.",
+      "features": ["Rich text editor", "Cloud sync", "Tagging & organization"],
+      "reviews": [
+        { "user": "note_master", "rating": 4, "comment": "Good for quick note-taking." }
+      ]
+    },
+    {
+      "id": "app008",
+      "name": "QuizMaster",
+      "developer": "EduFun Ltd.",
+      "thumbnail": "https://i.ibb.co/Y08XkT4/quizmaster-thumb.jpg",
+      "banner": "https://i.ibb.co/q5YtYdN/quizmaster-banner.jpg",
+      "downloads": 3000000,
+      "category": "Education",
+      "rating": 4.7,
+      "description": "Test your knowledge and learn through fun quizzes.",
+      "features": ["Multiple categories", "Leaderboard", "Daily challenges"],
+      "reviews": [
+        { "user": "quiz_fan", "rating": 5, "comment": "Love the variety of quizzes!" }
+      ]
+    }
+  ]
+  

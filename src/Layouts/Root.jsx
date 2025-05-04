@@ -1,13 +1,16 @@
 import React from 'react';
-import Navbar from '../pages/Navbar/Navbar';
-import Footer from '../pages/Footer/Footer';
 import { Outlet } from 'react-router';
+import Navbar from '../components/Navbar/Navbar';
+import Footer from '../components/Footer.jsx/Footer';
 
 const Root = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <Outlet></Outlet>
+            {/* main section */}
+            <main className="min-h-[80vh] bg-red-300">
+                <Outlet></Outlet>
+            </main>
             <Footer></Footer>
         </div>
     );

@@ -1,18 +1,24 @@
 import { createBrowserRouter } from "react-router";
-import Home from "../pages/Home/Home";
-import About from "../About/About";
-import Login from "../pages/Login/Login";
-import SignUp from "../pages/Sign Up/SignUp";
+import NotFound from "../pages/Error/NotFound";
 import Root from "../Layouts/Root";
+import Login from "../pages/Auth/Login";
+import SignUp from "../pages/Auth/SignUp";
+import AppsPage from "../pages/Apps/AppsPage";
+import Profile from "../pages/Profile/Profile";
 
  export const router = createBrowserRouter([
     {
       path: "/",
       Component: Root,
+      errorElement: <NotFound></NotFound>,
       children: [
         {
             path: "/",
-            Component: Home
+            Component: AppsPage
+        },
+        {
+          path: '/myProfile',
+          Component: Profile
         },
         
         {
