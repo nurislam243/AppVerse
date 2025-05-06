@@ -5,7 +5,7 @@ import Footer from '../components/Footer.jsx/Footer';
 
 const Root = () => {
     return (
-        <div>
+        <div className='@container'>
             <Navbar></Navbar>
             {/* main section */}
             <main className="min-h-[80vh] bg-base-100">

@@ -3,21 +3,22 @@ import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../context/AuthContext/AuthContext';
 import NavEnd from '../ui/Navend';
 import Button from '../ui/button';
+import { IoMenu } from 'react-icons/io5';
 
 const Navbar = () => {
     const {user} = useContext(AuthContext);
 
     return (
         <div className="w-full  sticky top-0 bg-base-200 z-20">
-            <nav className="container mx-auto navbar">
+            <nav className="container mx-auto navbar py-5">
                 <div className="navbar-start">
-                    <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+                    <div className="dropdown mr-2">
+                    <div tabIndex={0} role="button" className="lg:hidden">
+                        <IoMenu size={35}/>
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 text-secondary text-xl font-medium shadow">
+                        className="menu dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-3 text-secondary space-y-4 text-xl font-medium border-base-300 border-2">
                         <li><NavLink to={'/'} >Apps</NavLink></li>
                         <li><NavLink to={'/latest'} >Latest Apps</NavLink></li>
                         <li><NavLink to={'/myProfile'} >My Profile</NavLink></li>
@@ -26,15 +27,15 @@ const Navbar = () => {
                     </div>
                     <div className="flex justify-center items-center gap-1.5">
                         <img className='w-12' src="/public/AppVerseLogo.png" alt="logo" />
-                        <h2 className="gradient-text text-3xl font-bold">AppVerse</h2>
+                        <h2 className="gradient-text text-3xl font-bold hidden min-[450px]:block">AppVerse</h2>
                     </div>
                     
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 text-secondary font-medium text-xl">
-                        <li><NavLink to={'/'} >Apps</NavLink></li>
-                        <li><NavLink to={'/latest'} >Latest Apps</NavLink></li>
-                        <li><NavLink to={'/myProfile'} >My Profile</NavLink></li>
+                        <li><NavLink to={'/'} className={({isActive})=>(isActive ? 'btn btn-primary text-xl font-medium rounded-none' : '')}>Apps</NavLink></li>
+                        <li><NavLink to={'/latest'} className={({isActive})=>(isActive ? 'btn btn-primary text-xl font-medium rounded-none' : '')}>Latest Apps</NavLink></li>
+                        <li><NavLink to={'/myProfile'} className={({isActive})=>(isActive ? 'btn btn-primary text-xl font-medium rounded-none' : '')}>My Profile</NavLink></li>
                     </ul>
                 </div>
                 <div className="navbar-end gap-2">
