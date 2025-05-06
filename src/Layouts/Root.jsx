@@ -8,7 +8,7 @@ const Root = () => {
         <div>
             <Navbar></Navbar>
             {/* main section */}
-            <main className="min-h-[80vh] bg-red-300">
+            <main className="min-h-[80vh] bg-base-100">
                 <Outlet></Outlet>
             </main>
             <Footer></Footer>

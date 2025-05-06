@@ -28,3 +28,7 @@ export const educationAppsData = (apps) =>{
     return educationApps;
 } 
   
+export const latestAppsData = (apps) =>{
+    const latestApps = apps.sort((a, b) => b.id - a.id).slice(0, 8);
+    return latestApps;
+}

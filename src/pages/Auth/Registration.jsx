@@ -1,31 +1,32 @@
 import { useContext, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../../context/AuthContext/AuthContext';
 import { FcGoogle } from 'react-icons/fc';
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { auth } from '../../firebase/firebase.init';
+import Swal from 'sweetalert2';
+
 
 const Registration = () => {
     const [passwordEye, setPasswordEye] = useState(true);
-    const [confirmPasswordEye, setConfirmPasswordEye] = useState(true);
-
-
+    const googleProvider = new GoogleAuthProvider();
     const { handleRegistration, 
         passwordError,
-        confirmPasswordError,
         nameError,
         emailError,
         setPasswordError,
         setConfirmPasswordError,
         setNameError,
         setEmailError,
-        handleLoginGoogle
+        setUser
     } = useContext(AuthContext)
+    const navigate = useNavigate();
     const handleSubmitRegistration = (e) =>{
         e.preventDefault();
         const email = e.target.email.value;
         const name = e.target.name.value;
         const password = e.target.password.value;
-        const confirmPassword = e.target.confirmPassword.value;
         const profileImage = e.target.photoUrl.value;
         
         setPasswordError("");
@@ -35,15 +36,15 @@ const Registration = () => {
         
 
         if(name === ""){
-            setNameError("Name requred !!");
+            setNameError("Name required !!");
             return;
         }
         if(email === ""){
-            setEmailError("Email Requared !!");
+            setEmailError("Email Required !!");
             return;
         }
-        if(password.length < 8){
-            setPasswordError("Password must be equal or greater than 8 !!")
+        if(password.length < 6){
+            setPasswordError("Password must be equal or greater than 6 !!")
             return;
         }
         if(!/[a-z]/.test(password)){
@@ -54,23 +55,42 @@ const Registration = () => {
             setPasswordError("password must contain at least one upper case letter !!")
             return
         }
-        if(!/\d/.test(password)){
-            setPasswordError("password must contain at least one number !!")
-            return
-        }
-        if(!/[!"#$%&'()*+,\-./:;<=>?@\[\\\]^_`{|}~]/.test(password)){
-            setPasswordError("password must contain one special character !!")
-            return
-        }
-        if(password !== confirmPassword){
-            setConfirmPasswordError("password and confirm password must be same !!")
-            return
-        }
 
         
-        handleRegistration(email, password, name, profileImage)
+        handleRegistration(email, password, name, profileImage, navigate);
         
     }
+
+
+    // Registration with Google
+    const handleRegistrationGoogle = () => {
+        signInWithPopup(auth, googleProvider)
+        .then((result) => {
+            const googleUser = result.user;
+            setUser(googleUser);
+
+            Swal.fire(
+                'Sign In Successful', 
+                `Welcome ${googleUser.displayName || 'User'}! Your account has been created successfully.`, 
+                'success'
+            );
+            navigate("/");
+        })
+        .catch((error) => {
+            let errorMessage = "";
+
+            if (error.code === 'auth/popup-closed-by-user') {
+                errorMessage = "Popup was closed before completing the sign in. Please try again.";
+            } else if (error.code === 'auth/cancelled-popup-request') {
+                errorMessage = "Sign-in popup was cancelled. Please try again.";
+            } else {
+                errorMessage = error.message;
+            }
+
+            Swal.fire('Error', errorMessage, 'error');
+        });
+    }
+
     return (
         <div className='bg-[#EFEFEF] pt-2 @min-[350px]:px-3 @min-[400px]:px-4 @min-[500px]:px-5 @min-[640px]:px-12 @min-[768px]:px-6 @min-[1000px]:px-12 @min-[1550px]:px-[120px] pb-[50px] md:pb-[65px] xl:pb-[100px]  @min-[1750px]:px-[160px]'>
             <div className="w-full rounded-3xl @min-[496px]:pt-[18px] @min-[630px]:pt-[50px]  @min-[496px]:pb-8 @min-[800px]:pb-[70px] bg-linear-to-b from-[#EFEFEF] to-[#FFFFFF] border-3 border-[#FFFFFF]">
@@ -79,9 +99,9 @@ const Registration = () => {
                         <h1 className="my-3 text-4xl font-bold">Registration</h1>
                         <p className="text-sm dark:text-gray-600">Please Registration to your account</p>
                     </div>
-                    <button aria-label="Login with Google" onClick={handleLoginGoogle} type="button" className="flex items-center cursor-pointer rounded-[99px] justify-center w-full p-4 space-x-4 border focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600">
+                    <button aria-label="Login with Google" onClick={handleRegistrationGoogle} type="button" className="flex items-center cursor-pointer rounded-[99px] justify-center w-full p-4 space-x-4 border focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600">
                         <FcGoogle size={25}/>
-                        <p>SignUp with Google</p>
+                        <p>Continue with Google</p>
                     </button>
                     <div className="flex items-center w-full my-4">
                         <hr  className="w-full dark:text-gray-600" />
@@ -118,20 +138,6 @@ const Registration = () => {
                                     </span>
                                 </div>
                                 <p className='text-sm text-red-500 mt-1.5'>{passwordError}</p>
-                            </div>
-                            <div>
-                                <div className="flex justify-between mb-2">
-                                    <label htmlFor="confirmPassword" className="text-sm">Confirm Password</label>
-                                </div>
-                                <div className="relative">
-                                    <input type={confirmPasswordEye ? "password" : "text"} name="confirmPassword" id="confirmPassword" placeholder="Enter confirm password" className="w-full px-3 py-2 border rounded-[99px] dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
-                                    <span onClick={()=>setConfirmPasswordEye(!confirmPasswordEye)} className="absolute text-2xl mt-2 -ml-10">
-                                        {
-                                            confirmPasswordEye ? <FaEye /> : <FaEyeSlash/>
-                                        }
-                                    </span>
-                                </div>
-                                <p className='text-sm text-red-500 mt-1.5'>{confirmPasswordError}</p>
                             </div>
                         </div>
                         <div className="space-y-2">

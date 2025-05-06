@@ -1,30 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { GoogleAuthProvider, signInWithPopup,  createUserWithEmailAndPassword,signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile, sendPasswordResetEmail} from 'firebase/auth';
+import {   createUserWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile, sendPasswordResetEmail} from 'firebase/auth';
 import Swal from 'sweetalert2';
 import { auth } from '../../firebase/firebase.init';
 import { AuthContext } from '../AuthContext/AuthContext';
 
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
-    const googleProvider = new GoogleAuthProvider();
     const [passwordError, setPasswordError] = useState("");
     const [confirmPasswordError, setConfirmPasswordError] = useState("");
     const [nameError, setNameError] = useState("");
     const [emailError, setEmailError] = useState("");
     const [loading,setLoading] = useState(true);
 
-    const handleLoginGoogle = () =>{
-        signInWithPopup(auth, googleProvider)
-        .then((result) => {
-          const googleUser = result.user;
-          setUser(googleUser);
-          Swal.fire('Login Successful', 'You have successfully logged in.', 'success');
-        }).catch((error) => {
-          Swal.fire('Error', error.message, 'error');
-        });
-    }
 
-    const handleRegistration = (email, password, name, profileImage) => {
+    const handleRegistration = (email, password, name, profileImage, navigate) => {
         createUserWithEmailAndPassword(auth, email, password)
        .then((userCredential) => { 
         const passwordUser = userCredential.user;
@@ -40,6 +29,8 @@ const AuthProvider = ({children}) => {
           // An error occurred
           // ...
         });
+
+        navigate('/')
         })
 
         .catch((error) => {
@@ -49,25 +40,6 @@ const AuthProvider = ({children}) => {
                 Swal.fire('Invalid Email', 'Please enter a valid email address.', 'error');
               } else {
                 Swal.fire('Error', error.message, 'error');
-              }
-        });
-
-    }
-
-    const handleLoginWithPassword = (email, password) =>{
-        signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => { 
-            const passwordLoginUser = userCredential.user;
-            setUser(passwordLoginUser);
-            Swal.fire('Login Successful', 'You have successfully logged in.', 'success');
-        })
-        .catch((error) => {
-            if (error.code === 'auth/invalid-email') {
-                Swal.fire('Invalid Email', 'Please enter a valid email address.', 'error');
-              } else if (error.code === 'auth/user-not-found') {
-                Swal.fire('No User Found', 'No user found with this email.', 'error');
-              } else {
-                Swal.fire('Wrong Password', 'Incorrect password! Please try again.', 'error');
               }
         });
 
@@ -88,10 +60,26 @@ const AuthProvider = ({children}) => {
           Swal.fire('Invalid Email', 'Please enter a valid email address.', 'error');
         } else if (error.code === 'auth/user-not-found') {
           Swal.fire('No User Found', 'No user found with this email.', 'error');
+        } else if (error.code === 'auth/missing-email') {
+          Swal.fire('Email field cannot be empty', 'Please provide your email address.', 'error');
         } else {
           Swal.fire('Error', error.message, 'error');
         }
       });
+    }
+
+    // update profile
+    const handleUpdateProfile = (name, image) =>{
+      updateProfile(auth.currentUser, {
+        displayName: name, photoURL: image
+      }).then(() => {
+        setUser(auth.currentUser);
+        alert("profile update successfully")
+      }).catch((error) => {
+        // An error occurred
+        // ...
+      });
+
     }
 
     const handleLogout = () => {
@@ -125,12 +113,12 @@ const AuthProvider = ({children}) => {
     };
    
 
-    const authValue = {
-        handleLoginWithPassword, 
-        handleLoginGoogle,
+    const authValue = { 
         handleRegistration,
         handleLogout,
         user,
+        setUser,
+        handleUpdateProfile,
         passwordError,
         confirmPasswordError,
         nameError,
@@ -147,7 +135,7 @@ const AuthProvider = ({children}) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
           setUser(currentUser);
-          setLoading(false)
+          setLoading(false);
         });
       
         return () => {

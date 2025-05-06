@@ -2,11 +2,12 @@ import { createBrowserRouter } from "react-router";
 import NotFound from "../pages/Error/NotFound";
 import Root from "../Layouts/Root";
 import Login from "../pages/Auth/Login";
-import SignUp from "../pages/Auth/SignUp";
 import AppsPage from "../pages/Apps/AppsPage";
-import Profile from "../pages/Profile/Profile";
 import AppDetails from "../pages/Apps/AppDetails";
 import LatestApps from "../pages/LatestApps/LatestApps";
+import Registration from "../pages/Auth/Registration";
+import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
+import MyProfile from "../pages/MyProfile/MyProfile";
 
  export const router = createBrowserRouter([
     {
@@ -21,24 +22,25 @@ import LatestApps from "../pages/LatestApps/LatestApps";
         },
         {
           path: '/myProfile',
-          Component: Profile
+          element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>
         },
         {
           path: '/latest',
+          loader: () => fetch('/apps.json'),
           Component: LatestApps
         },
         {
           path: '/appDetails/:appId',
           loader: () => fetch('/apps.json'),
-          Component: AppDetails
+          element: <PrivateRoute><AppDetails></AppDetails></PrivateRoute>
         },
         {
             path: '/login',
             Component: Login
         },
         {
-            path: '/signup',
-            Component: SignUp
+            path: '/registration',
+            Component: Registration
         },
         
       ]

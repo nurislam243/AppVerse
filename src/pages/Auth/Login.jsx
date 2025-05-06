@@ -1,25 +1,75 @@
 import React, { useContext, useRef, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../context/AuthContext/AuthContext';
 import { FcGoogle } from 'react-icons/fc';
+import Swal from 'sweetalert2';
+import { auth } from '../../firebase/firebase.init';
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 
 
 const Login = () => {
     const [passwordEye, setPasswordEye] = useState(true)
-    const {handleLoginWithPassword, handleLoginGoogle, handlePasswordReset} = useContext(AuthContext);
+    const { handlePasswordReset, setUser} = useContext(AuthContext);
     const emailRef = useRef();
+    const location = useLocation();
+    const from = location?.state?.from;
+    const navigate = useNavigate();
+    const googleProvider = new GoogleAuthProvider();
 
     const submitHandlePasswordReset = () =>{
         const email = emailRef.current.value;
         handlePasswordReset(email)
     }
 
-    const handleSubmitLoginWithPassword =(e)=>{
+    // login with email and password
+
+    const handleLoginWithPassword =(e)=>{
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        handleLoginWithPassword(email, password)
+
+            signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {                
+                const passwordLoginUser = userCredential.user;                
+                setUser(passwordLoginUser);               
+                Swal.fire('Login Successful', 'You have successfully logged in.', 'success');
+                navigate(from?from:"/");
+                
+            })
+            .catch((error) => {
+                switch (error.code) {
+                    case 'auth/missing-email':
+                        Swal.fire('Missing Email', 'Please enter your email address before logging in.', 'error');
+                        break;
+                    case 'auth/invalid-email':
+                        Swal.fire('Invalid Email', 'The email address format is invalid. Please enter a valid email.', 'error');
+                        break;
+                    case 'auth/user-not-found':
+                        Swal.fire('User Not Found', 'No account found with this email. Please check or register first.', 'error');
+                        break;
+                    case 'auth/wrong-password':
+                        Swal.fire('Wrong Password', 'The password you entered is incorrect. Please try again.', 'error');
+                        break;
+                    default:
+                        Swal.fire('Error', error.message, 'error');
+                        break;
+                }
+            });
+    }
+
+
+    // login with google
+    const handleLoginGoogle = () =>{
+        signInWithPopup(auth, googleProvider)
+        .then((result) => {
+          const googleUser = result.user;
+          setUser(googleUser);
+          Swal.fire('Login Successful', 'You have successfully logged in.', 'success');
+          navigate(from?from:"/");
+        }).catch((error) => {
+          Swal.fire('Error', error.message, 'error');
+        });
     }
     return (
         <div className='bg-[#EFEFEF] pt-2 @min-[350px]:px-3 @min-[400px]:px-4 @min-[500px]:px-5 @min-[640px]:px-12 @min-[768px]:px-6 @min-[1000px]:px-12 @min-[1550px]:px-[120px] pb-[50px] md:pb-[65px] xl:pb-[100px]  @min-[1750px]:px-[160px]'>
@@ -40,7 +90,7 @@ const Login = () => {
                     <p className="px-3 dark:text-gray-600">OR</p>
                     <hr  className="w-full dark:text-gray-600" />
                 </div>
-                <form noValidate="" onSubmit={handleSubmitLoginWithPassword}  action="" className="space-y-8">
+                <form noValidate="" onSubmit={handleLoginWithPassword}  action="" className="space-y-8">
                     <div className="space-y-4">
                         <div className="space-y-2">
                             <label htmlFor="email" className="block text-sm">Email address</label>
