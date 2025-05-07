@@ -99,7 +99,7 @@ const Registration = () => {
                         <h1 className="my-3 text-4xl font-bold">Registration</h1>
                         <p className="text-sm dark:text-gray-600">Please Registration to your account</p>
                     </div>
-                    <button aria-label="Login with Google" onClick={handleRegistrationGoogle} type="button" className="flex items-center cursor-pointer rounded-[99px] justify-center w-full p-4 space-x-4 border focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600">
+                    <button aria-label="Login with Google" onClick={handleRegistrationGoogle} type="button" className="flex items-center cursor-pointer rounded-[99px] justify-center w-full px-4 py-2.5 space-x-4 border focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600">
                         <FcGoogle size={25}/>
                         <p>Continue with Google</p>
                     </button>
@@ -108,7 +108,7 @@ const Registration = () => {
                         <p className="px-3 dark:text-gray-600">OR</p>
                         <hr  className="w-full dark:text-gray-600" />
                     </div>
-                    <form noValidate="" onSubmit={handleSubmitRegistration} action="" className="space-y-12">
+                    <form noValidate="" onSubmit={handleSubmitRegistration} action="" className="">
                         <div className="space-y-4">
                             <div>
                                 <label htmlFor="name" className="block mb-2 text-sm">Name</label>
@@ -140,16 +140,16 @@ const Registration = () => {
                                 <p className='text-sm text-red-500 mt-1.5'>{passwordError}</p>
                             </div>
                         </div>
-                        <div className="space-y-2">
+                        <div className="mt-6">
                             <div>
-                                <button type='submit' class="px-5 py-[9px] w-full relative border-2 border-[#176AE5] rounded-[99px] group overflow-hidden font-medium inline-block cursor-pointer">
-                                    <span class="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-[#305486] group-hover:h-full opacity-90"></span>
+                                <button type='submit' class="px-5 py-[9px] w-full relative border-2 border-primary rounded-[99px] group overflow-hidden font-medium inline-block cursor-pointer">
+                                    <span class="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-primary group-hover:h-full opacity-90"></span>
                                     <span class="relative group-hover:text-white">Registration</span>
                                 </button>
                             </div>
                         </div>
                     </form>                    
-                    <p className="px-6 text-sm text-center dark:text-gray-600">Already have an account ? 
+                    <p className="px-6 text-sm text-center dark:text-gray-600 mt-2">Already have an account ? 
                         <Link rel="noopener noreferrer" to={'/login'} href="#" className="hover:underline dark:text-violet-600 text-blue-700"> Login</Link>.
                     </p>
                 </div> 

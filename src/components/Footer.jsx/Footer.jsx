@@ -3,7 +3,7 @@ import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
     return (
-        <footer className="bg-neutral text-neutral-content pt-14 pb-8 mt-10">
+        <footer className="bg-neutral text-neutral-content pt-14 pb-8">
             <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-y-8">
 
                 {/* Logo & Name */}

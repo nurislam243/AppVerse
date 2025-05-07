@@ -6,7 +6,7 @@ import 'swiper/css/pagination';
 
 const AppSlider = () => {
   return (
-    <div className="mx-auto my-5">
+    <div className="mx-auto mb-5">
       <Swiper
         navigation={true}
         cssMode={true}

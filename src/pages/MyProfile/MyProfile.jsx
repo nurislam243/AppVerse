@@ -1,25 +1,31 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext/AuthContext';
 import { FaUserAlt } from 'react-icons/fa';
 
 const MyProfile = () => {
-  const {user, handleUpdateProfile} = useContext(AuthContext);
-  
+  const {user, handleUpdateProfile, loading, setLoading} = useContext(AuthContext);
+  const [profileLoading, setProfileLoading] = useState(false);
 
   const submitUpdateProfile = (e) =>{
+    setProfileLoading(true)
     e.preventDefault();
-    const name = e.target.name.value;
-    const image = e.target.image.value;
+    console.log(loading);
+    const name = e.target.name.value || user.displayName;
+    const image = e.target.image.value || user.photoURL;
+
 
     handleUpdateProfile(name, image)
+    setProfileLoading(false)
   }
   
   return (
-    <div className="max-w-2xl mx-auto mt-10 py-6 px-3 sm:px-4 md:px-6 lg:px-14 rounded-2xl shadow-xl bg-base-100 shadow-neutral">
+    <div className="max-w-2xl mx-auto mt-10 py-6 px-3 sm:px-4 md:px-6 lg:px-14 rounded-2xl shadow-xl shadow-gray-800 bg-base-100">
       <h2 className="text-3xl font-bold mb-6 text-center text-primary/90">My Profile Information</h2>
 
       {/* Profile Image */}
-      <div className="flex flex-col items-center mb-6">
+      {
+        loading ? <p>Loading</p> : <>
+        <div className="flex flex-col items-center mb-6">
         {
           user ? <img 
           src={user?.photoURL} 
@@ -63,6 +69,8 @@ const MyProfile = () => {
           Update Profile
         </button>
       </form>
+        </>
+      }
     </div>
   );
 };

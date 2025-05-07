@@ -30,6 +30,12 @@ const AuthProvider = ({children}) => {
           // ...
         });
 
+        Swal.fire({
+          icon: 'success',
+          title: 'Registration Successful!',
+          text: 'Welcome . Your account has been created successfully.',
+        });
+
         navigate('/')
         })
 
@@ -70,10 +76,14 @@ const AuthProvider = ({children}) => {
 
     // update profile
     const handleUpdateProfile = (name, image) =>{
+      setLoading(true);
+      console.log(loading);
       updateProfile(auth.currentUser, {
         displayName: name, photoURL: image
       }).then(() => {
-        setUser(auth.currentUser);
+        setUser({
+          ...auth.currentUser, name, image
+        });
         Swal.fire({
           title: 'Profile Updated!',
           text: 'Your changes have been saved successfully.',
@@ -86,7 +96,7 @@ const AuthProvider = ({children}) => {
         // An error occurred
         // ...
       });
-
+      setLoading(false);
     }
 
     const handleLogout = () => {
@@ -135,12 +145,14 @@ const AuthProvider = ({children}) => {
         setNameError,
         setEmailError,
         handlePasswordReset,
-        loading
+        loading,
+        setLoading
 
     }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+          console.log(currentUser);
           setUser(currentUser);
           setLoading(false);
         });

@@ -1,19 +1,15 @@
 import React from 'react';
 import { useLoaderData } from 'react-router';
 import { latestAppsData } from '../../utils/utils';
+import LatestAppsCard from '../../components/LatestAppsCard/LatestAppsCard';
 
 const LatestApps = () => {
     const apps = useLoaderData();
     const latestApps = latestAppsData(apps);
-    latestApps.forEach(element => {
-        console.log(element);
-    });
     return (
-        <div>
+        <div className='grid grid-cols-1 @min-[520px]:grid-cols-2 @min-[1280px]:grid-cols-3 gap-6 container mx-auto'>
             {
-                latestApps.map(singleApps => {
-                   return <h1>{singleApps.name}</h1>
-                })
+                latestApps.map(singleApp => <LatestAppsCard singleApp={singleApp}></LatestAppsCard>)
             }
         </div>
     );
