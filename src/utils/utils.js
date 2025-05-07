@@ -1,7 +1,7 @@
 export const trendingAppsData = (apps) => {
     const trendingSort = apps 
       .sort((a, b) => b.rating - a.rating)
-      .slice(0, 4); 
+      .slice(0, 5); 
     return trendingSort;
   };
 

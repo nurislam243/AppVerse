@@ -14,7 +14,7 @@ const CategorySection = ({ apps, category }) => {
 
     return (
         <div>
-            <h2 className='text-primary/90 text-3xl font-bold mt-6 mb-4'>{category}</h2>
+            <h2 className='text-primary/90 text-2xl lg:text-3xl font-bold mt-6 mb-4'>{category}</h2>
 
             <div className="flex relative items-center group/category">
                 

@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import AppCard from '../AppCard/AppCard';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import { trendingAppsData } from '../../utils/utils';
+import TrendingAppCard from '../TrendingAppCard/TrendingAppCard';
 
 const AppsContainer = ({apps}) => {
 
@@ -9,21 +10,13 @@ const AppsContainer = ({apps}) => {
     
     const sliderRef = useRef(null);
 
-    const slideLeft = () =>{       
-        sliderRef.current.scrollLeft -= 500;
-    }
-    const slideRight = () =>{       
-        sliderRef.current.scrollLeft += 500;
-    }
     return (
         <div className="flex items-center">
-            <MdArrowBackIosNew className='opacity-40 cursor-pointer hover:opacity-100' onClick={slideLeft} size={40}/>
-            <div ref={sliderRef} className="flex gap-4 overflow-x-auto scrollbar-width whitespace-nowrap scroll-smooth scroll-snap-type-x mandatory">
+            <div ref={sliderRef} className="grid @min-[300px]:grid-cols-2 @min-[700px]:grid-cols-3 @min-[1200px]:grid-cols-4 @min-[1500px]:grid-cols-5 gap-4">
                 {
-                    trendingApps.map(singleApp => <AppCard singleApp={singleApp}></AppCard>)
+                    trendingApps.map(singleApp => <TrendingAppCard singleApp={singleApp}></TrendingAppCard>)
                 }
             </div>
-            <MdArrowForwardIos className='opacity-40 cursor-pointer hover:opacity-100' onClick={slideRight} size={40}/>
         </div>
     );
 };

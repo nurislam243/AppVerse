@@ -17,15 +17,29 @@ const AppsPage = () => {
             <AppSlider></AppSlider>
             {/* Trending section section */}
             <div className="">
-                <h1>Trending</h1>
+                <div className="mt-[100px] mb-[50px]">
+                    <h2 className="text-primary text-3xl lg:text-4xl font-bold text-center">🔥 Trending Apps</h2>
+                    <p className="text-base-content/70 text-lg mt-2 text-center">Discover the hottest apps everyone is talking about. Stay updated with the top-rated apps this week.
+                    </p>
+                </div>
                 <TrendingApps apps={apps}></TrendingApps>
             </div>
-            <CategorySection apps={productivityApps} category={'Productivity'}></CategorySection>
-            <CategorySection apps={gamingApps} category={'Gaming'}></CategorySection>
-            <CategorySection apps={educationApps} category={'Education'}></CategorySection>
+            {/* categories section */}
+            <div className="">
+                <div className="text-center mt-[100px] mb-[20px]">
+                    <h1 className='text-primary/90 font-bold text-3xl lg:text-4xl'>Category</h1>
+                    <p className='text-base-content/70 text-lg mt-2'>Discover apps from different categories</p>
+                </div>
+                <CategorySection apps={productivityApps} category={'Productivity'}></CategorySection>
+                <CategorySection apps={gamingApps} category={'Gaming'}></CategorySection>
+                <CategorySection apps={educationApps} category={'Education'}></CategorySection>
+            </div>
             {/* TopDownloads section */}
             <div className="">
-                <h1>Top Downloads</h1>
+                <div className="text-center mt-[100px] mb-[20px]">
+                    <h1 className='text-primary/90 font-bold text-3xl lg:text-4xl'>Top Downloads</h1>
+                    <p className='text-base-content/70 text-lg mt-2'>Discover apps from different categories</p>
+                </div>
                 <TopDownloads apps={apps}></TopDownloads>
             </div>
         </div>
