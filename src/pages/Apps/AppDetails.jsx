@@ -7,11 +7,18 @@ const AppDetails = () => {
     const apps = useLoaderData();
   const { appId } = useParams();
   const app = apps.find((item) => item.id === appId);
-  console.log(app)
 
   const [reviews, setReviews] = useState(app.reviews || []);
   const [reviewText, setReviewText] = useState("");
   const [reviewRating, setReviewRating] = useState(5);
+  const [installBtnText, setInstallBtnText] = useState(true);
+  const [activeReview, setActiveReview] = useState(true);
+
+  const handleInstall = () =>{
+    setActiveReview(false);
+    setInstallBtnText(!installBtnText);
+
+  }
 
   const handleSubmitReview = () => {
     const newReview = { user: "current_user", rating: reviewRating, comment: reviewText };
@@ -20,12 +27,9 @@ const AppDetails = () => {
     setReviewRating(5);
   };
 
-  if (!app) {
-    return <p className="text-center mt-10 text-red-500">App not found!</p>;
-  }
-
   return (
-    <div className="max-w-5xl mx-auto p-4">
+    <div className="container mx-auto bg-white mt-4 rounded-xl">
+      <div className="max-w-5xl mx-auto p-4">
       {/* Top Info */}
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-2xl font-bold">{app.name}</h1>
@@ -62,8 +66,10 @@ const AppDetails = () => {
       </ul>
 
       {/* Install Button */}
-      <button className="bg-green-500 hover:bg-green-600 text-white rounded-full px-6 py-2 mb-6">
-        Install
+      <button onClick={handleInstall} className="btn btn-primary mb-6">
+        {
+          installBtnText ? 'Install' : 'Uninstall'
+        }
       </button>
 
       {/* Submit Review */}
@@ -85,7 +91,8 @@ const AppDetails = () => {
         />
         <button
           onClick={handleSubmitReview}
-          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+          className="btn btn-accent"
+          disabled={activeReview}
         >
           Submit Review
         </button>
@@ -103,6 +110,7 @@ const AppDetails = () => {
           </div>
         </div>
       ))}
+    </div>
     </div>
   );
 };
