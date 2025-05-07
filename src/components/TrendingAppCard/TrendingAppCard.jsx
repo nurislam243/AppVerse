@@ -18,7 +18,7 @@ const TrendingAppCard = ({singleApp }) => {
                         <h4 className='font-medium text-lg'>{name}</h4>
                         <div className="flex justify-between">
                             <h4 className='flex items-center gap-1'><FaStar/>{rating}</h4>
-                            <h4 className='flex items-center gap-1'><HiOutlineDownload /> {millify(downloads, { precision: 2 })}</h4>
+                            <h4 className='flex items-center gap-1'><HiOutlineDownload /> {millify(downloads, { precision: 2 })}+</h4>
                         </div>
                     </div>
                     <h3 className='absolute top-3 right-3 badge badge-primary sm:p-3'>🔥 Trending</h3>
