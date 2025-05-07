@@ -8,7 +8,7 @@ const TopDownloadCard = ({singleApp}) => {
     const {id, name, developer, thumbnail, banner, downloads,  rating, description
     } = singleApp;
     return (
-        <div className="rounded-xl w-full mx-auto lg:min-w-[440px] 2xl:min-w-[490px] overflow-hidden bg-base-200 border border-base-300">
+        <div className="rounded-xl w-full mx-auto @min-[903px]:min-w-[241px] @min-[1275px]:min-w-[305px] @min-[1530px]:min-w-[360px] @min-[1560px]:min-w-[366px] overflow-hidden bg-base-200 border border-base-300">
             <div className="relative">
                 {/* Banner Image */}
                 <img
@@ -39,7 +39,7 @@ const TopDownloadCard = ({singleApp}) => {
                     <h4 className='flex items-center gap-1'><HiOutlineDownload /> {millify(downloads, { precision: 2 })}+</h4>
                 </div>
 
-                <p className="mt-2 text-base-content/80 break-words max-w-full">
+                <p className="mt-2 text-base-content/80">
                     {description}
                 </p>
 

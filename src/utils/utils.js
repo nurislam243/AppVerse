@@ -8,7 +8,7 @@ export const trendingAppsData = (apps) => {
 export const topDownloadsData = (apps) =>{
     const topDownloadsSort = apps
       .sort((a, b) => b.downloads - a.downloads)
-      .slice(0, 7); 
+      .slice(0, 8); 
     return topDownloadsSort;
     
 }
@@ -29,6 +29,6 @@ export const educationAppsData = (apps) =>{
 } 
   
 export const latestAppsData = (apps) =>{
-    const latestApps = apps.sort((a, b) => b.id - a.id).slice(0, 8);
+    const latestApps = apps.sort((a, b) => b.id - a.id).slice(0, 10);
     return latestApps;
 }

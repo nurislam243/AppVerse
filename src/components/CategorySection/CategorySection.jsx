@@ -20,15 +20,15 @@ const CategorySection = ({ apps, category }) => {
                 
                 {/* Left Arrow */}
                 <MdArrowBackIosNew 
-                    className='absolute left-0 z-10 opacity-0 cursor-pointer group-hover/category:opacity-40 hover:opacity-100 bg-white rounded-full p-2 shadow-md' 
+                    className='absolute left-0 hidden @min-[500px]:block z-10 opacity-0 cursor-pointer group-hover/category:opacity-40 hover:opacity-100 bg-white rounded-full p-2 shadow-md' 
                     onClick={slideLeft} 
                     size={41} 
                 />
 
                 <div 
                     ref={sliderRef} 
-                    className="flex gap-6 overflow-x-auto scrollbar-width whitespace-nowrap scroll-smooth scroll-snap-align-start"
-                >
+                    className="flex gap-2 @min-[440px]:gap-3 @min-[520px]:gap-4 @min-[590px]:gap-5 @min-[700px]:gap-6 overflow-x-auto whitespace-nowrap scrollbar-width scroll-smooth scroll-snap-align-start"
+                >        
                     {
                         apps.map(singleApp => <AppCard key={singleApp.id} singleApp={singleApp} />)
                     }
@@ -36,7 +36,7 @@ const CategorySection = ({ apps, category }) => {
 
                 {/* Right Arrow */}
                 <MdArrowForwardIos 
-                    className='absolute right-0 z-10 opacity-0 cursor-pointer group-hover/category:opacity-40 hover:opacity-100 bg-white rounded-full p-2 shadow-md' 
+                    className='absolute right-0 z-10 opacity-0 hidden @min-[500px]:block cursor-pointer group-hover/category:opacity-40 hover:opacity-100 bg-white rounded-full p-2 shadow-md' 
                     onClick={slideRight} 
                     size={41} 
                 />
