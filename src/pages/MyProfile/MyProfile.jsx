@@ -15,8 +15,8 @@ const MyProfile = () => {
   }
   
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 border rounded-2xl shadow-lg bg-white">
-      <h2 className="text-3xl font-bold mb-6 text-center text-indigo-600">My Profile Information</h2>
+    <div className="max-w-2xl mx-auto mt-10 py-6 px-3 sm:px-4 md:px-6 lg:px-14 rounded-2xl shadow-xl bg-base-100 shadow-neutral">
+      <h2 className="text-3xl font-bold mb-6 text-center text-primary/90">My Profile Information</h2>
 
       {/* Profile Image */}
       <div className="flex flex-col items-center mb-6">
@@ -24,16 +24,16 @@ const MyProfile = () => {
           user ? <img 
           src={user?.photoURL} 
           alt="Profile" 
-          className="w-24 h-24 rounded-xl border-1 border-indigo-500 shadow-md" 
-        />: <FaUserAlt />
+          className="w-28 h-28 rounded-xl border-1" 
+        />: <FaUserAlt className="w-28 h-28 rounded-xl border-1" />
         }
-        <h2 className='mt-2'>Name: {user?.displayName}</h2>
-        <p className="mt-3 text-gray-700 font-medium">Email: {user?.email}</p>
+        <h2 className='mt-2 text-base-content/90 sm:text-xl'><span className='text-secondary/90'>Name: </span>{user?.displayName}</h2>
+        <p className="mt-3 text-base-content/90 sm:text-xl font-medium"><span className='text-secondary/90'>Email:</span> {user?.email}</p>
       </div>
 
       <hr className='border-t border-dashed my-7'/>
 
-      <h1 className='text-center'>Update Name and Profile Image</h1>
+      <h1 className='text-center text-primary/85 font-bold sm:text-xl'>Update Name and Profile Image</h1>
       {/* Update Form */}
       <form onSubmit={submitUpdateProfile} className="space-y-5">
         <div>
@@ -42,7 +42,7 @@ const MyProfile = () => {
             type="text"
             name='name' 
             placeholder="Enter your name"
-            className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            className="w-full border p-3 rounded-lg input input-bordered focus:outline-none focus:ring-2"
           />
         </div>
 
@@ -52,13 +52,13 @@ const MyProfile = () => {
             type="text" 
             name='image'
             placeholder="Enter photo URL"
-            className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            className="w-full border input input-bordered p-3 rounded-lg focus:outline-none focus:ring-2"
           />
         </div>
 
         <button 
           type="submit"
-          className="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition"
+          className="w-full btn  btn-secondary py-3 rounded-lg"
         >
           Update Profile
         </button>

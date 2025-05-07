@@ -74,7 +74,14 @@ const AuthProvider = ({children}) => {
         displayName: name, photoURL: image
       }).then(() => {
         setUser(auth.currentUser);
-        alert("profile update successfully")
+        Swal.fire({
+          title: 'Profile Updated!',
+          text: 'Your changes have been saved successfully.',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+        });
       }).catch((error) => {
         // An error occurred
         // ...
