@@ -20,7 +20,7 @@ const CategorySection = ({ apps, category }) => {
                 
                 {/* Left Arrow */}
                 <MdArrowBackIosNew 
-                    className='absolute left-0 z-10 opacity-0 cursor-pointer group-hover/category:opacity-60 hover:opacity-100 bg-base-200 rounded-full p-2 shadow-md' 
+                    className='absolute left-0 z-10 opacity-0 cursor-pointer group-hover/category:opacity-40 hover:opacity-100 bg-white rounded-full p-2 shadow-md' 
                     onClick={slideLeft} 
                     size={41} 
                 />
@@ -36,7 +36,7 @@ const CategorySection = ({ apps, category }) => {
 
                 {/* Right Arrow */}
                 <MdArrowForwardIos 
-                    className='absolute right-0 z-10 opacity-0 cursor-pointer group-hover/category:opacity-60 hover:opacity-100 bg-base-200 rounded-full p-2 shadow-md' 
+                    className='absolute right-0 z-10 opacity-0 cursor-pointer group-hover/category:opacity-40 hover:opacity-100 bg-white rounded-full p-2 shadow-md' 
                     onClick={slideRight} 
                     size={41} 
                 />
