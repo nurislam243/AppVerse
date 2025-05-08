@@ -10,6 +10,9 @@ import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import MyProfile from "../pages/MyProfile/MyProfile";
 import LoadingSpinner from "../components/ui/LoadingSpinner";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import TermsOfService from "../pages/TermsOfService/TermsOfService";
+import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
+import DeveloperResources from "../pages/DeveloperResources/DeveloperResources";
 
  export const router = createBrowserRouter([
     {
@@ -50,7 +53,19 @@ import AboutUs from "../pages/AboutUs/AboutUs";
         {
             path: '/registration',
             Component: Registration
+        },
+        {
+          path: '/termsOfServices',
+          Component: TermsOfService
         },        
+        {
+          path: '/privacyPolicy',
+          Component: PrivacyPolicy
+        },
+        {
+          path: '/developerResources',
+          Component: DeveloperResources
+        }       
       ]
     },
   ]);
