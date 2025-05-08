@@ -46,3 +46,5 @@ const CategorySection = ({ apps, category }) => {
 };
 
 export default CategorySection;
+
+

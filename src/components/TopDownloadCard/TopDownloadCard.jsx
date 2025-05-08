@@ -16,6 +16,7 @@ const TopDownloadCard = ({singleApp}) => {
                 src={banner}
                 alt="Banner"
                 />
+                <h1 className='bg-accent text-white p-1 rounded-2xl absolute top-1 right-1 text-[10px]'>📥 Top Downloaded</h1>
                 {/* thumbnail Image */}
                 <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
                 <img

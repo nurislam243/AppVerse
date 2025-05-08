@@ -26,7 +26,7 @@ const Navbar = () => {
                     </ul>
                     </div>
                     <div className="flex justify-center items-center gap-1.5">
-                        <img className='w-12' src="/public/AppVerseLogo.png" alt="logo" />
+                        <img className='w-12' src="/AppVerseLogo.png" alt="logo" />
                         <h2 className="gradient-text text-3xl font-bold hidden min-[450px]:block">AppVerse</h2>
                     </div>
                     
