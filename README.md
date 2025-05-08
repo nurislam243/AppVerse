@@ -3,7 +3,12 @@
 **AppVerse** is a next-generation AppStore platform built with React where users can explore trending apps, browse by categories, install apps, and share their reviews. With a sleek and responsive design, AppVerse makes app discovery effortless and enjoyable.
 
 ## 🚀 Live Website
-👉 [Live Site Link]()
+👉 [Visit AppVerse Live Site](https://appverse-8230a.web.app/)
+
+## 🗂️ GitHub Repository
+👉 [View on GitHub](https://github.com/programming-hero-web-course1/b11a9-react-authentication-nurislam243)
+
+---
 
 ## 🟣 Project Purpose
 The purpose of **AppVerse** is to deliver a user-friendly and engaging app store experience that simplifies the process of discovering, installing, and managing apps. Users can explore trending apps, filter apps by categories like Education, Gaming, and Productivity, and share feedback through reviews. AppVerse aims to make app exploration seamless while encouraging user interaction.
@@ -24,22 +29,30 @@ The purpose of **AppVerse** is to deliver a user-friendly and engaging app store
 - 🔗 Dynamic Routing with Dynamic Page Titles
 - 🎉 Sweet Alert & Toast Notifications for Success/Error Messages
 - 🚀 Fast Loading & SEO Friendly
+- 🌐 Hosted on Firebase Hosting
 
 ---
 
-## 🟢 Technologies & Packages Used
+## 🟢 Technologies Used (Core Technologies)
 
-- **React JS**
-- **CSS**
-- **JavaScript**
-- **Firebase Authentication**
-- **Swiper JS** (for slider)
-- **Daisy UI**
-- **SweetAlert2**
-- **React Icons**
-- **Milify**
-- **React Router DOM**
-- **React Helmet Async** (Dynamic Titles)
+- **React JS** (Frontend Framework)
+- **Firebase** (Authentication and Hosting)
+- **CSS** (Styling)
+- **JavaScript** (Programming Language)
+
+---
+
+## 📦 NPM Packages Used
+
+- **React Router DOM** — For client-side routing
+- **Firebase** — For authentication & hosting
+- **Swiper JS** — For slider/carousel
+- **DaisyUI** — For styled components (Tailwind plugin)
+- **SweetAlert2** — For pop-up alerts
+- **React Icons** — For using icons
+- **Milify** — For formatting large numbers (downloads)
+- **React Helmet Async** — For setting dynamic page titles
+- **React Toastify** — For toast notifications
 
 ---
 
@@ -71,7 +84,17 @@ The apps data is stored in JSON format, with fields like id, name, category, rat
     "category": "Education",
     "rating": 4.8,
     "description": "Learn programming in an interactive and fun way with Programming Hero.",
-    "features": ["Interactive coding lessons", "Real-world projects", "Gamified learning experience"],
-    "reviews": [{ "user": "coder_nadia", "rating": 5, "comment": "Best app for beginners!" }]
+    "features": [
+      "Interactive coding lessons",
+      "Real-world projects",
+      "Gamified learning experience"
+    ],
+    "reviews": [
+      {
+        "user": "coder_nadia",
+        "rating": 5,
+        "comment": "Best app for beginners!"
+      }
+    ]
   }
 ]

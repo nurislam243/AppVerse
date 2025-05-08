@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext/AuthContext';
 import { FaUserAlt } from 'react-icons/fa';
+import { Helmet } from 'react-helmet-async';
 
 const MyProfile = () => {
   const {user, handleUpdateProfile, loading, setLoading} = useContext(AuthContext);
@@ -20,6 +21,9 @@ const MyProfile = () => {
   
   return (
     <div className="max-w-2xl mx-auto mt-10 py-6 px-3 sm:px-4 md:px-6 lg:px-14 rounded-2xl shadow-xl shadow-gray-800 bg-base-100">
+      <Helmet>
+        <title>My Profile | AppVerse</title>
+      </Helmet>
       <h2 className="text-3xl font-bold mb-6 text-center text-primary/90">My Profile Information</h2>
 
       {/* Profile Image */}

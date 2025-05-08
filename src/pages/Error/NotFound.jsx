@@ -2,10 +2,14 @@ import React from 'react';
 import { Link } from 'react-router';
 import errorImage from "../../assets/error.png"
 import errorRed from "../../assets/error-red.png"
+import { Helmet } from 'react-helmet-async';
 
 const NotFound = () => {
     return (
         <div className="pt-2 @container">
+            <Helmet>
+                <title>Not Found | AppVerse</title>
+            </Helmet>
             <div className="flex justify-center items-center">
                 <div className="mt-[3vh] md:mt-[5vh] lg:mt-[9vh] px-2 xl:mt-[11vh] 2xl:mt-[15vh]">
                     <div className="flex justify-center">

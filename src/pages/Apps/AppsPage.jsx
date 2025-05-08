@@ -3,7 +3,8 @@ import TrendingApps from '../../components/TrendingApps/TrendingApps';
 import TopDownloads from '../../components/TopDownloads/TopDownloads';
 import CategorySection from '../../components/CategorySection/CategorySection';
 import { useLoaderData } from 'react-router';
-import { educationAppsData, gamingAppsData, productivityAppsData } from '../../utils/utils';
+import { educationAppsData, gamingAppsData, latestSliderApps, productivityAppsData } from '../../utils/utils';
+import { Helmet } from 'react-helmet-async';
 
 
 const AppsPage = () => {
@@ -11,10 +12,15 @@ const AppsPage = () => {
     const productivityApps = productivityAppsData(apps);
     const gamingApps = gamingAppsData(apps);
     const educationApps = educationAppsData(apps);
+    const latestSlider = latestSliderApps(apps);
 
     return (
         <div className='container mx-auto'>
-            <AppSlider></AppSlider>
+            <Helmet>
+                <title>Apps Page | AppVerse</title>
+            </Helmet>
+
+            <AppSlider latestSlider={latestSlider}></AppSlider>
             {/* Trending section section */}
             <div className="">
                 <div className="mt-[100px] mb-[50px] px-4 lg:p-0 max-w-[800px] mx-auto">

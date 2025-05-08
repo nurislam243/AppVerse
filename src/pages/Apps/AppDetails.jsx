@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { FaStar } from "react-icons/fa";
 import { useLoaderData } from "react-router";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const AppDetails = () => {
     const apps = useLoaderData();
@@ -71,6 +72,9 @@ const AppDetails = () => {
 
   return (
     <div className="container mx-auto mt-4 shadow-2xl">
+      <Helmet>
+          <title>{app?.name ? `${app.name} | AppVerse` : "Apps Details | AppVerse"}</title>
+      </Helmet>
       <div className="max-w-[1300px] mx-auto px-2 sm:px-4 pb-5 lg:pb-9 pt-6">
       {/* Top Info */}
       <div className="flex items-center justify-between mb-4 lg:mb-7">

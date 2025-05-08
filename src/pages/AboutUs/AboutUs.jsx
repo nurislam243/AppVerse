@@ -1,13 +1,13 @@
-// import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 import React from "react";
 
 const AboutUs = () => {
   return (
     <div className="container mx-auto px-4 py-10">
       {/* Dynamic Title */}
-      {/* <Helmet>
+      <Helmet>
         <title>About Us | AppVerse</title>
-      </Helmet> */}
+      </Helmet>
 
       <h1 className="text-4xl font-bold text-center mb-6 text-primary/85">
         Welcome to <span className="gradient-text">AppVerse</span>

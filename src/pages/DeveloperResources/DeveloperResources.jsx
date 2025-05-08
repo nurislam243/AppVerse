@@ -1,12 +1,12 @@
 import React from "react";
-// import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 
 const DeveloperResources = () => {
   return (
     <div className="container mx-auto shadow-2xl">
-        {/* <Helmet>
+        <Helmet>
             <title>Developer Resources | AppVerse</title>
-        </Helmet> */}
+        </Helmet>
         <div className="max-w-[1100px] min-h-[83vh] mx-auto px-4 py-10">
             <h1 className="text-3xl font-bold text-primary mb-6">Developer Resources</h1>
 

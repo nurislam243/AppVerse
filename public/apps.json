@@ -189,7 +189,7 @@
     "banner": "https://i.ibb.co.com/Z1fyR1fM/banner.jpg",
     "downloads": 2950000,
     "category": "Education",
-    "rating": 4.7,
+    "rating": 5,
     "description": "Learn new topics with bite-sized lessons every day. Track your streaks, earn points, join study groups, and stay consistent with engaging microlearning sessions designed for you.",
     "features": ["Daily lessons", "Expert instructors", "Offline mode"],
     "reviews": [{ "user": "spark_user", "rating": 5, "comment": "Great for quick learning!" }]
@@ -332,7 +332,7 @@
     "banner": "https://i.ibb.co.com/mFR76gxc/capsule-616x353.jpg",
     "downloads": 6100000,
     "category": "Gaming",
-    "rating": 4.9,
+    "rating": 4.8,
     "description": "Enter massive battles and dominate your enemies. Command armies, unlock powerful units, build strategies, and rise to the top in action-packed large-scale warfare.",
     "features": ["Huge battlefields", "Clan wars", "Exclusive rewards"],
     "reviews": [{ "user": "mega_warrior", "rating": 5, "comment": "Addictive and action-packed!" }]

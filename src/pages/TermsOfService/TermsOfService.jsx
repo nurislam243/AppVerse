@@ -1,13 +1,12 @@
 import React from "react";
-// primarymport { Helmet } from "react-helmet-async";
-
+import { Helmet } from "react-helmet-async";
 
 const TermsOfService = () => {
   return (
     <div className="container mx-auto shadow-2xl">
-        {/* <Helmet>
-        <title>Terms of Service | AppVerse</title>
-      </Helmet> */}
+        <Helmet>
+            <title>Terms of Service | AppVerse</title>
+        </Helmet>
         <div className="max-w-[1100px] min-h-[83vh] mx-auto px-4 py-10">
         
             <h1 className="text-3xl font-bold text-primary mb-6">Terms of Service</h1>

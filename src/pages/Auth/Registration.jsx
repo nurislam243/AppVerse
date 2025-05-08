@@ -7,6 +7,7 @@ import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { auth } from '../../firebase/firebase.init';
 import Swal from 'sweetalert2';
 import { toast, ToastContainer } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 
 const Registration = () => {
@@ -104,6 +105,9 @@ const Registration = () => {
 
     return (
         <div className='pt-2 @min-[350px]:px-3 @min-[400px]:px-4 @min-[500px]:px-5 @min-[640px]:px-12 @min-[768px]:px-6 @min-[1000px]:px-12 @min-[1550px]:px-[120px] pb-[50px]  @min-[1750px]:px-[160px]'>
+            <Helmet>
+                <title>Registration | AppVerse</title>
+            </Helmet>
             <div className="w-full rounded-3xl @min-[496px]:pt-[18px] @min-[630px]:pt-[50px]  @min-[496px]:pb-8">
                 <div className="flex flex-col max-w-md p-6 bg-white mx-auto text-black shadow-2xl rounded-2xl sm:p-10 dark:bg-gray-50 dark:text-gray-800">
                     <div className="mb-6 text-center">

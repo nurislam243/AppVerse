@@ -6,6 +6,7 @@ import { FcGoogle } from 'react-icons/fc';
 import Swal from 'sweetalert2';
 import { auth } from '../../firebase/firebase.init';
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { Helmet } from 'react-helmet-async';
 
 
 const Login = () => {
@@ -55,11 +56,13 @@ const Login = () => {
                 
             })
             .catch((error) => {
+                console.log(JSON.stringify(error))
                 switch (error.code) {
+
                     case 'auth/missing-email':
                         Swal.fire('Missing Email', 'Please enter your email address before logging in.', 'error');
                         break;
-                    case 'auth/invalid-email':
+                    case 'auth/invalid-credential':
                         Swal.fire('Invalid Email', 'The email address format is invalid. Please enter a valid email.', 'error');
                         break;
                     case 'auth/user-not-found':
@@ -85,11 +88,30 @@ const Login = () => {
           Swal.fire('Login Successful', 'You have successfully logged in.', 'success');
           navigate(from?from:"/");
         }).catch((error) => {
-          Swal.fire('Error', error.message, 'error');
+            let errorMessage = '';
+
+            if (error.code === 'auth/wrong-password') {
+              errorMessage = 'Incorrect password. Please try again.';
+              return;
+            } 
+            else if (error.code === 'auth/user-not-found') {
+              errorMessage = 'No user found with this email.';
+            }
+            else if (error.code === 'auth/popup-closed-by-user') {
+              errorMessage = 'Popup closed before completing sign in.';
+            } 
+            else {
+              errorMessage = error.message;
+            }
+          
+            Swal.fire('Error', errorMessage, 'error');
         });
     }
     return (
         <div className='pt-2 @min-[350px]:px-3 @min-[400px]:px-4 @min-[500px]:px-5 @min-[640px]:px-12 @min-[768px]:px-6 @min-[1000px]:px-12 @min-[1550px]:px-[120px] pb-[50px] md:pb-[65px] xl:pb-[100px]  @min-[1750px]:px-[160px]'>
+            <Helmet>
+                <title>Login | AppVerse</title>
+            </Helmet>
             <div className="w-full rounded-3xl @min-[496px]:pt-[18px] @min-[630px]:pt-[50px]  @min-[496px]:pb-8 @min-[800px]:pb-[70px]">
             <div className="w-full max-w-md p-4 bg-white mx-auto text-black shadow-2xl rounded-2xl  sm:p-8  dark:bg-gray-50 dark:text-gray-800">
                 <h2 className="mb-3 text-3xl font-semibold text-center">Login to your account</h2>

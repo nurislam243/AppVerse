@@ -28,7 +28,17 @@ export const educationAppsData = (apps) =>{
     return educationApps;
 } 
   
-export const latestAppsData = (apps) =>{
-    const latestApps = apps.sort((a, b) => b.id - a.id).slice(0, 12);
-    return latestApps;
+export const latestAppsData = (apps) => {
+  const latestApps = apps
+    .sort((a, b) => parseInt(b.id.slice(3)) - parseInt(a.id.slice(3)))
+    .slice(0, 12);
+  return latestApps;
+}
+
+
+export const latestSliderApps = (apps) =>{
+  const latestApps = apps
+    .sort((a, b) => parseInt(b.id.slice(3)) - parseInt(a.id.slice(3)))
+    .slice(0, 5);
+  return latestApps;
 }
