@@ -39,6 +39,14 @@ const AppDetails = () => {
   }
 
   const handleSubmitReview = () => {
+    if(reviewText == ""){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please write a review before submitting.',
+      });
+      return;
+    }
     if(reviewRating == 0){
       Swal.fire({
         icon: 'warning',
@@ -51,63 +59,73 @@ const AppDetails = () => {
     setReviews([newReview, ...reviews]);
     setReviewText("");
     setReviewRating(5);
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Success!',
+      text: 'Review submitted successfully!',
+    });
   };
 
 
 
   return (
-    <div className="container mx-auto bg-base-100 mt-4 shadow-2xl rounded-xl">
-      <div className="max-w-[1280px] mx-auto p-4">
+    <div className="container mx-auto mt-4 shadow-2xl">
+      <div className="max-w-[1300px] mx-auto px-2 sm:px-4 pb-5 lg:pb-9 pt-6">
       {/* Top Info */}
-      <div className="flex items-center justify-between mb-4">
-        <h1 className="text-2xl font-bold">{app.name}</h1>
-        <div className="flex items-center text-yellow-500">
+      <div className="flex items-center justify-between mb-4 lg:mb-7">
+        <h1 className="text-2xl lg:text-3xl font-bold">{app.name}</h1>
+        <div className="flex items-center text-lg lg:text-xl text-yellow-500">
           <FaStar /> <span className="ml-1 font-semibold">{app.rating}</span>
         </div>
       </div>
 
       {/* Banner */}
-      <img src={app.banner} alt={app.name} className="w-full h-48 object-cover rounded-xl mb-4" />
+      <img src={app.banner} alt='' className="w-full h-48 sm:h-64 md:h-72 lg:h-80 xl:h-96  rounded-xl mb-4" /> 
 
       {/* App Info */}
-      <div className="flex items-center gap-4 mb-4">
-        <img src={app.thumbnail} alt={app.name} className="w-20 h-20 object-cover rounded-lg" />
-        <div>
-          <p className="font-semibold">Developer: {app.developer}</p>
-          <p>Downloads: {app.downloads.toLocaleString()}</p>
-          <p>
-            Category:{" "}
+      <div className="flex items-center gap-2 @min-[350px]:gap-4 @min-[640px]:gap-6 @min-[768px]:gap-7 @min-[1024px]:gap-8 @min-[1536px]:gap-10 mb-4 md:mb-6 md:mt-5 lg:mt-7 mt-3 xl:mt-8 2xl:mt-9">
+        <img src={app.thumbnail} alt='' className="w-20 h-20 @min-[580px]:w-24 @min-[580px]:h-24 @min-[900px]:w-28 @min-[1200px]:w-32 @min-[1200px]:h-32 @min-[900px]:h-28 @min-[1500px]:w-36 @min-[1500px]:h-36 object-cover rounded-lg" />
+        <div className="sm:space-y-1 md:space-y-2 lg:space-y-3">
+          <p className="font-semibold sm:text-xl lg:text-[22px]">
+            <span className="text-base-content/85 sm:font-bold sm:mr-1.5">Developer:</span> {app.developer}
+          </p>
+          <p className="lg:text-[22px]">
+            <span className="text-base-content/85 sm:font-bold sm:mr-1.5">Downloads:</span> {app.downloads.toLocaleString()}
+          </p>
+          <p className="lg:text-[22px]">
+            <span className="text-base-content/85 sm:font-bold">Category:{" "}</span>
             <span className="bg-blue-100 text-blue-600 px-2 py-1 rounded">{app.category}</span>
           </p>
         </div>
       </div>
 
       {/* Description */}
-      <p className="text-gray-600 mb-4">{app.description}</p>
+      <p className="text-base-content/90 sm:text-xl mb-4">{app.description}</p>
 
       {/* Features */}
-      <h2 className="font-semibold mb-2">Features:</h2>
-      <ul className="list-disc list-inside text-gray-700 mb-4">
+      <h2 className="font-bold sm:text-2xl text-base-content/80 mb-2">Features:</h2>
+      <ul className="list-disc list-inside lg:text-lg text-base-content/90 mb-4">
         {app.features.map((feature, index) => (
           <li key={index}>{feature}</li>
         ))}
       </ul>
 
       {/* Install Button */}
-      <button onClick={handleInstall} className="btn btn-primary mb-6">
+      <button onClick={handleInstall} className="btn btn-primary sm:mt-2 sm:text-lg mb-6">
         {
           installBtnText ? 'Install' : 'Uninstall'
         }
       </button>
 
       {/* Submit Review */}
-      <div className="bg-gray-100 p-4 rounded mb-6">
-        <h2 className="font-semibold mb-2">Submit Your Review:</h2>
+      <div className="bg-white p-4 rounded mb-6">
+        <h2 className="font-bold mb-2 sm:text-2xl text-base-content/75 sm:mb-4">Submit Your Review:</h2>
         <textarea
           value={reviewText}
           onChange={(e) => setReviewText(e.target.value)}
           placeholder="Write your review..."
-          className="w-full p-2 border rounded mb-2"
+          className="w-full p-2 border rounded sm:text-lg mb-2"
         />
         <input
           type="number"
@@ -115,11 +133,11 @@ const AppDetails = () => {
           onChange={handleRating}
           min={1}
           max={5}
-          className="w-20 p-2 border rounded mr-2"
+          className="w-20 p-2 border sm:text-lg rounded mr-2"
         />
         <button
           onClick={handleSubmitReview}
-          className="btn btn-accent"
+          className="btn btn-accent sm:text-lg"
           disabled={activeReview}
         >
           Submit Review
@@ -127,10 +145,10 @@ const AppDetails = () => {
       </div>
 
       {/* Reviews */}
-      <h2 className="font-semibold mb-2">Recent Reviews:</h2>
+      <h2 className="font-bold text-base-content/75 sm:text-xl mb-2">Recent Reviews:</h2>
       {reviews.map((rev, index) => (
-        <div key={index} className="bg-gray-100 p-4 rounded mb-2">
-          <p className="mb-1">{rev.comment}</p>
+        <div key={index} className="bg-white p-4 rounded mb-2 sm:mb-3 lg:mb-5">
+          <p className="mb-1 text-base-content/90 sm:text-lg">{rev.comment}</p>
           <div className="flex items-center text-yellow-500">
             {Array.from({ length: rev.rating }, (_, i) => (
               <FaStar key={i} />

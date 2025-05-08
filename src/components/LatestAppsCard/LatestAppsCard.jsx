@@ -1,8 +1,9 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
+import { Link } from 'react-router';
 
 const LatestAppsCard = ({singleApp}) => {
-    const {thumbnail, category, name, rating } = singleApp;
+    const {thumbnail, category, name, rating, id } = singleApp;
     return (
         <div className="flex items-center gap-4 lg:gap-8 p-4 lg:px-8 lg:py-6 bg-purple-50 rounded-2xl shadow-md">
 
@@ -26,7 +27,7 @@ const LatestAppsCard = ({singleApp}) => {
                 <span className="text-sm font-medium">{rating}</span>
                 </div>
 
-                <button className='btn btn-secondary mt-2'>view app</button>
+                <Link to={`/appDetails/${id}`} className='btn btn-secondary mt-2'>view app</Link>
             </div>
         </div>
     );
