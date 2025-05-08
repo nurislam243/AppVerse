@@ -36,6 +36,7 @@ The purpose of **AppVerse** is to deliver a user-friendly and engaging app store
 ## 🟢 Technologies Used (Core Technologies)
 
 - **React JS** (Frontend Framework)
+- **Tailwind Css** (Frontend Framework)
 - **Firebase** (Authentication and Hosting)
 - **CSS** (Styling)
 - **JavaScript** (Programming Language)
@@ -58,13 +59,20 @@ The purpose of **AppVerse** is to deliver a user-friendly and engaging app store
 
 ## 🟣 Pages & Routes
 
-- `/` - Home (Apps Page)
-- `/login` - Login Page
-- `/register` - Register Page
-- `/apps/:id` - App Details Page (Protected)
-- `/my-profile` - My Profile Page (Protected)
-- `/about` - About Us (Extra Route)
-- `*` - 404 Not Found Page
+| Route                 | Page Description         | Access       |
+| --------------------- | ------------------------ | ------------ |
+| `/`                   | Home (All Apps Page)     | Public       |
+| `/latest`             | Latest Apps Page         | Public       |
+| `/appDetails/:appId`  | App Details Page         | 🔒 Protected |
+| `/myProfile`          | My Profile Page          | 🔒 Protected |
+| `/login`              | Login Page               | Public       |
+| `/registration`       | Register Page            | Public       |
+| `/aboutUs`            | About Us Page            | Public       |
+| `/termsOfServices`    | Terms of Services Page   | Public       |
+| `/privacyPolicy`      | Privacy Policy Page      | Public       |
+| `/developerResources` | Developer Resources Page | Public       |
+| `*`                   | 404 Not Found Page       | Public       |
+
 
 ---
 
