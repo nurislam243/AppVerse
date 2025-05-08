@@ -9,6 +9,7 @@ import Registration from "../pages/Auth/Registration";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import MyProfile from "../pages/MyProfile/MyProfile";
 import LoadingSpinner from "../components/ui/LoadingSpinner";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
  export const router = createBrowserRouter([
     {
@@ -23,14 +24,18 @@ import LoadingSpinner from "../components/ui/LoadingSpinner";
             Component: AppsPage
         },
         {
-          path: '/myProfile',
-          element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>
-        },
-        {
           path: '/latest',
           loader: () => fetch('/apps.json'),
           HydrateFallback: LoadingSpinner,
           Component: LatestApps
+        },
+        {
+          path: '/myProfile',
+          element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>
+        },
+        {
+          path: '/aboutUs',
+          Component: AboutUs
         },
         {
           path: '/appDetails/:appId',
@@ -45,8 +50,7 @@ import LoadingSpinner from "../components/ui/LoadingSpinner";
         {
             path: '/registration',
             Component: Registration
-        },
-        
+        },        
       ]
     },
   ]);

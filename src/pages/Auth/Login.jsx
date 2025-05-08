@@ -28,6 +28,23 @@ const Login = () => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
+        
+        if(email === ""){
+            Swal.fire({
+                icon: 'error',
+                title: 'Email Required!',
+                text: '⚠️ Please enter your email address!',
+            });
+            return;
+        }
+        if(password === ""){
+            Swal.fire({
+                icon: 'error',
+                title: 'Password Required!',
+                text: '⚠️ Please enter your password!',
+            });
+            return;
+        }
 
             signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {                
@@ -79,18 +96,8 @@ const Login = () => {
                 <p className="text-sm text-center dark:text-gray-600">Don't have account?
                 <Link to={'/registration'} rel="noopener noreferrer" className="focus:underline hover:underline text-blue-500"> Sign up here</Link>
                 </p>
-                <div className="my-6 space-y-4">
-                    <button aria-label="Login with Google" onClick={handleLoginGoogle} type="button" className="flex items-center cursor-pointer rounded-[99px] justify-center w-full px-4 py-2.5 space-x-4 border focus:ring-2 focus:ring-offset-1">
-                        <FcGoogle size={25}></FcGoogle>
-                        <p>Login with Google</p>
-                    </button>
-                </div>
-                <div className="flex items-center w-full my-4">
-                    <hr  className="w-full dark:text-gray-600" />
-                    <p className="px-3 dark:text-gray-600">OR</p>
-                    <hr  className="w-full dark:text-gray-600" />
-                </div>
-                <form noValidate="" onSubmit={handleLoginWithPassword}  action="" className="space-y-8">
+                
+                <form noValidate="" onSubmit={handleLoginWithPassword}  action="" className="space-y-8 mt-7">
                     <div className="space-y-4">
                         <div className="space-y-2">
                             <label htmlFor="email" className="block text-sm">Email address</label>
@@ -113,11 +120,24 @@ const Login = () => {
                             </div>
                         </div>
                     </div>
-                    <button type='submit' class="px-5 py-[9px] w-full relative border-2 border-primary rounded-[99px] group overflow-hidden font-medium inline-block cursor-pointer">
-                        <span class="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-primary group-hover:h-full opacity-90"></span>
+                    <button type='submit' class="px-5 py-[10px] w-full bg-primary text-white relative rounded-[99px] group overflow-hidden font-medium inline-block cursor-pointer">
+                        <span class="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 group-hover:bg-accent group-hover:h-full opacity-90"></span>
                         <span class="relative group-hover:text-white">Login</span>
                     </button>
                 </form>
+
+                <div className="flex items-center w-full mt-4">
+                    <hr  className="w-full dark:text-gray-600" />
+                    <p className="px-3 dark:text-gray-600">OR</p>
+                    <hr  className="w-full dark:text-gray-600" />
+                </div>
+
+                <div className="my-6 space-y-4">
+                    <button aria-label="Login with Google" onClick={handleLoginGoogle} type="button" className="flex items-center cursor-pointer rounded-[99px] justify-center w-full px-4 py-2.5 space-x-4 border focus:ring-2 focus:ring-offset-1">
+                        <FcGoogle size={25}></FcGoogle>
+                        <p>Login with Google</p>
+                    </button>
+                </div>
             </div> 
             </div>          
         </div>

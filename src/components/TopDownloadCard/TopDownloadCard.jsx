@@ -8,8 +8,8 @@ const TopDownloadCard = ({singleApp}) => {
     const {id, name, developer, thumbnail, banner, downloads,  rating, description
     } = singleApp;
     return (
-        <div className="rounded-xl w-full mx-auto @min-[903px]:min-w-[241px] @min-[1275px]:min-w-[305px] @min-[1530px]:min-w-[360px] @min-[1560px]:min-w-[366px] overflow-hidden bg-base-200 border border-base-300">
-            <div className="relative">
+        <div className="group/all rounded-xl w-full mx-auto @min-[903px]:min-w-[241px] @min-[1275px]:min-w-[305px] @min-[1530px]:min-w-[360px] @min-[1560px]:min-w-[366px] overflow-hidden bg-base-200 hover:bg-base-300 border border-base-300">
+            <div className="relative transition-transform duration-500 ease-in-out group-hover/all:scale-113">
                 {/* Banner Image */}
                 <img
                 className="w-full h-32 object-cover"

@@ -6,6 +6,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { auth } from '../../firebase/firebase.init';
 import Swal from 'sweetalert2';
+import { toast, ToastContainer } from 'react-toastify';
 
 
 const Registration = () => {
@@ -35,26 +36,36 @@ const Registration = () => {
         setEmailError("");
         
 
-        if(name === ""){
-            setNameError("Name required !!");
+        if (name === "") {
+            toast.error('⚠️ Please enter your name!', { position: "top-center" });
             return;
         }
-        if(email === ""){
-            setEmailError("Email Required !!");
+        if (email === "") {
+            toast.error('⚠️ Please enter your email address!', { position: "top-center" });
             return;
         }
-        if(password.length < 6){
-            setPasswordError("Password must be equal or greater than 6 !!")
+        if(profileImage === ""){
+            toast.error('⚠️ Please enter your profile URL', { position: "top-center" });
             return;
         }
-        if(!/[a-z]/.test(password)){
-            setPasswordError("password must contain at least one lower case letter !!")
-            return
+        if (!/\d/.test(password)) {
+            toast.error('⚠️ Password must include at least one number (0-9).', { position: "top-center" });
+            return;
         }
-        if(!/[A-Z]/.test(password)){
-            setPasswordError("password must contain at least one upper case letter !!")
-            return
+        if (!/[a-z]/.test(password)) {
+            toast.error('⚠️ Password must include at least one lowercase letter (a-z).', { position: "top-center" });
+            return;
         }
+        if (!/[A-Z]/.test(password)) {
+            toast.error('⚠️ Password must include at least one uppercase letter (A-Z).', { position: "top-center" });
+            return;
+        }
+        if (password.length < 6) {
+            toast.error('⚠️ Password must be at least 6 characters long.', { position: "top-center" });
+            return;
+        }
+        
+        
 
         
         handleRegistration(email, password, name, profileImage, navigate);
@@ -95,19 +106,11 @@ const Registration = () => {
         <div className='pt-2 @min-[350px]:px-3 @min-[400px]:px-4 @min-[500px]:px-5 @min-[640px]:px-12 @min-[768px]:px-6 @min-[1000px]:px-12 @min-[1550px]:px-[120px] pb-[50px]  @min-[1750px]:px-[160px]'>
             <div className="w-full rounded-3xl @min-[496px]:pt-[18px] @min-[630px]:pt-[50px]  @min-[496px]:pb-8">
                 <div className="flex flex-col max-w-md p-6 bg-white mx-auto text-black shadow-2xl rounded-2xl sm:p-10 dark:bg-gray-50 dark:text-gray-800">
-                    <div className="mb-8 text-center">
+                    <div className="mb-6 text-center">
                         <h1 className="my-3 text-4xl font-bold">Registration</h1>
                         <p className="text-sm dark:text-gray-600">Please Registration to your account</p>
                     </div>
-                    <button aria-label="Login with Google" onClick={handleRegistrationGoogle} type="button" className="flex items-center cursor-pointer rounded-[99px] justify-center w-full px-4 py-2.5 space-x-4 border focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600">
-                        <FcGoogle size={25}/>
-                        <p>Continue with Google</p>
-                    </button>
-                    <div className="flex items-center w-full my-4">
-                        <hr  className="w-full dark:text-gray-600" />
-                        <p className="px-3 dark:text-gray-600">OR</p>
-                        <hr  className="w-full dark:text-gray-600" />
-                    </div>
+                    
                     <form noValidate="" onSubmit={handleSubmitRegistration} action="" className="">
                         <div className="space-y-4">
                             <div>
@@ -142,8 +145,8 @@ const Registration = () => {
                         </div>
                         <div className="mt-6">
                             <div>
-                                <button type='submit' class="px-5 py-[9px] w-full relative border-2 border-primary rounded-[99px] group overflow-hidden font-medium inline-block cursor-pointer">
-                                    <span class="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-primary group-hover:h-full opacity-90"></span>
+                                <button type='submit' class="px-5 py-[10px] w-full bg-primary relative rounded-[99px] group overflow-hidden  text-white font-medium inline-block cursor-pointer">
+                                    <span class="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 group-hover:bg-accent group-hover:h-full opacity-90"></span>
                                     <span class="relative group-hover:text-white">Registration</span>
                                 </button>
                             </div>
@@ -152,8 +155,21 @@ const Registration = () => {
                     <p className="px-6 text-sm text-center dark:text-gray-600 mt-2">Already have an account ? 
                         <Link rel="noopener noreferrer" to={'/login'} href="#" className="hover:underline dark:text-violet-600 text-blue-700"> Login</Link>.
                     </p>
+
+                    <div className="flex items-center w-full my-4">
+                        <hr  className="w-full dark:text-gray-600" />
+                        <p className="px-3 dark:text-gray-600">OR</p>
+                        <hr  className="w-full dark:text-gray-600" />
+                    </div>
+                    
+                    <button aria-label="Login with Google" onClick={handleRegistrationGoogle} type="button" className="flex items-center cursor-pointer rounded-[99px] justify-center w-full px-4 py-2.5 space-x-4 border focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600">
+                        <FcGoogle size={25}/>
+                        <p>Continue with Google</p>
+                    </button>
+
                 </div> 
-            </div>          
+            </div>
+            <ToastContainer />          
         </div>
     );
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer.jsx/Footer';
+import 'react-toastify/dist/ReactToastify.css'
 
 const Root = () => {
     return (

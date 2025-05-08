@@ -22,6 +22,7 @@ const Navbar = () => {
                         <li><NavLink to={'/'} >Apps</NavLink></li>
                         <li><NavLink to={'/latest'} >Latest Apps</NavLink></li>
                         <li><NavLink to={'/myProfile'} >My Profile</NavLink></li>
+                        <li><NavLink to={'/aboutUs'}>About Us</NavLink></li>
                         
                     </ul>
                     </div>
@@ -36,6 +37,7 @@ const Navbar = () => {
                         <li><NavLink to={'/'} className={({isActive})=>(isActive ? 'btn btn-primary text-xl font-medium rounded-none' : '')}>Apps</NavLink></li>
                         <li><NavLink to={'/latest'} className={({isActive})=>(isActive ? 'btn btn-primary text-xl font-medium rounded-none' : '')}>Latest Apps</NavLink></li>
                         <li><NavLink to={'/myProfile'} className={({isActive})=>(isActive ? 'btn btn-primary text-xl font-medium rounded-none' : '')}>My Profile</NavLink></li>
+                        <li><NavLink to={'/aboutUs'} className={({isActive})=>(isActive ? 'btn btn-primary text-xl font-medium rounded-none' : '')}>AboutUs</NavLink></li>
                     </ul>
                 </div>
                 <div className="navbar-end gap-2">
