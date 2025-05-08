@@ -77,7 +77,7 @@ const AuthProvider = ({children}) => {
     // update profile
     const handleUpdateProfile = (name, image) =>{
       setLoading(true);
-      console.log(loading);
+      // console.log(loading);
       updateProfile(auth.currentUser, {
         displayName: name, photoURL: image
       }).then(() => {
@@ -122,7 +122,7 @@ const AuthProvider = ({children}) => {
               });
             })
             .catch((error) => {
-              console.log(error);
+              // console.log(error);
               Swal.fire('Error', error.message, 'error');
             });
         }
@@ -152,7 +152,7 @@ const AuthProvider = ({children}) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-          console.log(currentUser);
+          // console.log(currentUser);
           setUser(currentUser);
           setLoading(false);
         });

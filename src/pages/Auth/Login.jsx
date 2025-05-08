@@ -56,14 +56,14 @@ const Login = () => {
                 
             })
             .catch((error) => {
-                console.log(JSON.stringify(error))
+                // console.log(JSON.stringify(error))
                 switch (error.code) {
 
                     case 'auth/missing-email':
                         Swal.fire('Missing Email', 'Please enter your email address before logging in.', 'error');
                         break;
                     case 'auth/invalid-credential':
-                        Swal.fire('Invalid Email', 'The email address format is invalid. Please enter a valid email.', 'error');
+                        Swal.fire('Invalid Email', 'The email address is invalid. Please enter a valid email.', 'error');
                         break;
                     case 'auth/user-not-found':
                         Swal.fire('User Not Found', 'No account found with this email. Please check or register first.', 'error');

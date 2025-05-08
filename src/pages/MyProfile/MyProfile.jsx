@@ -10,7 +10,7 @@ const MyProfile = () => {
   const submitUpdateProfile = (e) =>{
     setProfileLoading(true)
     e.preventDefault();
-    console.log(loading);
+    // console.log(loading);
     const name = e.target.name.value || user.displayName;
     const image = e.target.image.value || user.photoURL;
 

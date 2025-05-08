@@ -7,7 +7,7 @@ import millify from 'millify';
 import { Link } from 'react-router';
 
 const AppSlider = ({latestSlider}) => {
-  console.log(latestSlider)
+  // console.log(latestSlider)
   return (
     <div className="mx-auto mb-5">
       <Swiper
