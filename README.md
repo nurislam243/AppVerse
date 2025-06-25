@@ -129,34 +129,11 @@ Ensure you have the following installed:
 ### 📁 Clone the Repository
 
 ```bash
-git clone https:https://github.com/nurislam243/AppVerse
-cd b11a9-react-authentication-nurislam243
+git clone https://github.com/nurislam243/AppVerse.git
+cd AppVerse
 
 
-##📦 Install Dependencies
-```bash
-npm install
 
-### 🔐 Setup Environment Variables
-Create a .env file in the root of the project directory and add your Firebase configuration:
 
-env
-
-VITE_apiKey=your_api_key
-VITE_authDomain=your_auth_domain
-VITE_projectId=your_project_id
-VITE_storageBucket=your_storage_bucket
-VITE_messagingSenderId=your_sender_id
-VITE_appId=your_app_id
-Replace the values with actual credentials from your Firebase project.
-
-🏃‍♂️ Start the Development Server
-bash
-Copy
-Edit
-npm run dev
-The app should now be running at: http://localhost:5173
-
-You can log in with Firebase-enabled Google or email/password authentication.
 
 
