@@ -114,6 +114,7 @@ The apps data is stored in JSON format, with fields like id, name, category, rat
   }
 ]
 
+---
 
 ## ⚙️ Installation & How to Run Locally
 
@@ -131,28 +132,29 @@ Ensure you have the following installed:
 ```bash
 git clone https://github.com/nurislam243/AppVerse.git
 cd AppVerse
+```
+
+### 📦 Install Dependencies
 
 
-
-##📦 Install Dependencies
 ```bash
 npm install
+```
+### 🔐 Setup Firebase
 
+✅ একদম ফাইনালভাবে `.env` section এ শুধু নিচেরটুকু রাখো:
+
+```md
 
 ### 🔐 Setup Firebase
+
 1. Go to the [Firebase Console](https://console.firebase.google.com/) and create a new project.
-2. Add a web app to your project and copy the Firebase configuration object.
-3. Create a `.env` file in the root of the project and add the following:
-   ```env
-   VITE_apiKey=your_api_key
-   VITE_authDomain=your_auth_domain
-   VITE_projectId=your_project_id
-   VITE_storageBucket=your_storage_bucket
-   VITE_messagingSenderId=your_sender_id
-   VITE_appId=your_app_id
-
-4. Enable Email/Password and Google authentication in the Firebase Authentication section.
-5. Deploy the app to Firebase Hosting (optional) using npm run build and firebase deploy.
-
-
-
+2. Add a web app to your project and copy the Firebase configuration.
+3. Create a `.env` file in the root and add:
+```env
+VITE_apiKey=your_api_key
+VITE_authDomain=your_auth_domain
+VITE_projectId=your_project_id
+VITE_storageBucket=your_storage_bucket
+VITE_messagingSenderId=your_sender_id
+VITE_appId=your_app_id
