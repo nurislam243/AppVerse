@@ -129,19 +129,19 @@ Ensure you have the following installed:
 ### 📁 Clone the Repository
 
 ```bash
-git clone https://github.com/programming-hero-web-course1/b11a9-react-authentication-nurislam243.git
+git clone https:https://github.com/nurislam243/AppVerse
 cd b11a9-react-authentication-nurislam243
-📦 Install Dependencies
-bash
-Copy
-Edit
+
+
+##📦 Install Dependencies
+```bash
 npm install
-🔐 Setup Environment Variables
+
+### 🔐 Setup Environment Variables
 Create a .env file in the root of the project directory and add your Firebase configuration:
 
 env
-Copy
-Edit
+
 VITE_apiKey=your_api_key
 VITE_authDomain=your_auth_domain
 VITE_projectId=your_project_id
