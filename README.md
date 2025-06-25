@@ -114,6 +114,7 @@ The apps data is stored in JSON format, with fields like id, name, category, rat
   }
 ]
 
+---
 
 ## ⚙️ Installation & How to Run Locally
 
