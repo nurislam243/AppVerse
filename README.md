@@ -153,3 +153,4 @@ VITE_projectId=your_project_id
 VITE_storageBucket=your_storage_bucket
 VITE_messagingSenderId=your_sender_id
 VITE_appId=your_app_id
+```
