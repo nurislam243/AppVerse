@@ -2,6 +2,13 @@
 
 **AppVerse** is a next-generation AppStore platform built with React where users can explore trending apps, browse by categories, install apps, and share their reviews. With a sleek and responsive design, AppVerse makes app discovery effortless and enjoyable.
 
+---
+
+## Home Page-
+![AppVerse Home Page](src/assets/Screenshot_96.png)
+
+---
+
 ## 🚀 Live Website
 👉 [Visit AppVerse Live Site](https://appverse-8230a.web.app/)
 
@@ -106,3 +113,50 @@ The apps data is stored in JSON format, with fields like id, name, category, rat
     ]
   }
 ]
+
+
+## ⚙️ Installation & How to Run Locally
+
+### 🔧 Prerequisites
+Ensure you have the following installed:
+- Node.js (v16 or above)
+- npm (comes with Node.js) or yarn
+- Git
+- Firebase project (for authentication and hosting)
+
+---
+
+### 📁 Clone the Repository
+
+```bash
+git clone https://github.com/programming-hero-web-course1/b11a9-react-authentication-nurislam243.git
+cd b11a9-react-authentication-nurislam243
+📦 Install Dependencies
+bash
+Copy
+Edit
+npm install
+🔐 Setup Environment Variables
+Create a .env file in the root of the project directory and add your Firebase configuration:
+
+env
+Copy
+Edit
+VITE_apiKey=your_api_key
+VITE_authDomain=your_auth_domain
+VITE_projectId=your_project_id
+VITE_storageBucket=your_storage_bucket
+VITE_messagingSenderId=your_sender_id
+VITE_appId=your_app_id
+Replace the values with actual credentials from your Firebase project.
+
+🏃‍♂️ Start the Development Server
+bash
+Copy
+Edit
+npm run dev
+The app should now be running at: http://localhost:5173
+
+You can log in with Firebase-enabled Google or email/password authentication.
+
+

@@ -10,7 +10,7 @@ const Footer = () => {
                 {/* Logo & Name */}
                 <div>
                 <div className="flex items-center gap-1.5">
-                    <img className='w-12' src="/public/AppVerseLogo.png" alt="logo" />
+                    <img className='w-12' src="/AppVerseLogo.png" alt="logo" />
                     <h2 className="gradient-text text-3xl font-bold">AppVerse</h2>
                 </div>
                 <p className="text-sm mt-3">Your favorite place to discover and review apps!</p>

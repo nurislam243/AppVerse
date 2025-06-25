@@ -23,8 +23,9 @@ const AuthProvider = ({children}) => {
         updateProfile(auth.currentUser, {
           displayName: name, photoURL: profileImage
         }).then(() => {
-          // Profile updated!
-          // ...
+          setUser({
+            ...auth.currentUser, name, profileImage
+          });
         }).catch((error) => {
           // An error occurred
           // ...
